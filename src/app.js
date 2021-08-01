@@ -3,8 +3,8 @@ const path = require('path')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
-
 const app = express()
+const port = process.env.PORT || 3000
 
 //Setting up directories
 const publicDirectory = path.join(__dirname, '../public')
@@ -19,24 +19,25 @@ hbs.registerPartials(partialsPath)
 //Defining the static directory
 app.use(express.static(publicDirectory))
 
+//Writing function of each page
 app.get('', (req, res) => {
     res.render('index', {
         title: "Weather",
-        name: "Abhinav Sahay & Shivam Pande"
+        name: "Shivam Pande"
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: "About",
-        name: "Abhinav Sahay & Shivam Pande"
+        name: "Shivam Pande"
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
         title: "Help",
-        name: "Abhinav Sahay & Shivam Pande",
+        name: "Shivam Pande",
         helpMessage: 'To see the weather, navigate to the main Weather page, enter your location in the search box and press Search'
     })
 })
@@ -54,7 +55,6 @@ app.get('/weather', (req, res) => {
                 error: error
             })
         }
-
         if (req.query.address === undefined) {
             return res.send({
                 error: "Location incorrect! Please enter a proper location."
@@ -81,7 +81,7 @@ app.get('/weather', (req, res) => {
 app.get('/help/*', (req, res) => {
     res.render('404', {
         title: 404,
-        name: "Abhinav Sahay & Shivam Pande", 
+        name: "Shivam Pande", 
         errorMessage: "Help article not found!"
     })
 })
@@ -89,12 +89,11 @@ app.get('/help/*', (req, res) => {
 app.get('*', (req, res) => {
     res.render('404', {
         title: 404,
-        name: "Abhinav Sahay & Shivam Pande",
+        name: "Shivam Pande",
         errorMessage: "Page Not Found!"
     })
 })
 
-
-app.listen(3000, () => {
-    console.log('Server running on port 3000! Yayyyyy!')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port + '. Yayyyyyy!')
 })

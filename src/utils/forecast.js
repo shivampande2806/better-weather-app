@@ -11,7 +11,7 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.message === "wrong longitude") {
             callback("Wrong longitude! Please check your coordinates.", undefined)
         } else {
-            callback(undefined, "The temperature is " + body.main.temp + " degrees and it feels like " + body.main.feels_like + " degrees.")
+            callback(undefined, "The temperature is " + body.main.temp + " degrees, though it feels like " + body.main.feels_like + " degrees and the humidity is " + body.main.humidity + "%.")
         }
     })
 }
