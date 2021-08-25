@@ -6,4 +6,5 @@
 
 ## How to use
 
-Clone or whatever, npm-install or whatever, node src/app.js or whatever, go to your browser and search http://localhost:3000/ or whatever, and now just search how *hot and wet* you are right now.
+Clone or whatever, npm-install or whatever, node src/app.js or whatever, go to your browser and search http://localhost:3000/ or whatever, and now just search.
+Heroku Deployment: https://behtar-weather-app.herokuapp.com/
